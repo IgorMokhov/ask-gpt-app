@@ -1,9 +1,12 @@
-import './App.css';
+import { AskGPTLayout } from './components/AskGPTLayout/AskGPTLayout';
+import { Container } from './UI/Container/Container';
 
 export const App = () => {
   return (
     <main>
-      <h1>Ask GPT App</h1>
+      <Container>
+        <AskGPTLayout />
+      </Container>
     </main>
   );
 };
