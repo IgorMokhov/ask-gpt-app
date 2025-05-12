@@ -5,13 +5,20 @@ import { fetchAIResponse } from '../../services/openaiApi';
 interface IAskGPTFormProps {
   onSaveAIResponse: (res: string | null) => void;
   onSaveError: (err: string | null) => void;
+  setIsLoading: (value: boolean) => void;
 }
 
-export const AskGPTForm = ({ onSaveAIResponse, onSaveError }: IAskGPTFormProps) => {
+export const AskGPTForm = ({
+  onSaveAIResponse,
+  onSaveError,
+  setIsLoading,
+}: IAskGPTFormProps) => {
   const [userMessage, setUserMessage] = useState<string>('');
 
   const onSubmitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    setIsLoading(true);
     onSaveError(null);
 
     try {
@@ -22,6 +29,7 @@ export const AskGPTForm = ({ onSaveAIResponse, onSaveError }: IAskGPTFormProps) 
         onSaveError(`Error from fetchAIResponse: ${err.message}`);
       }
     } finally {
+      setIsLoading(false);
       setUserMessage('');
     }
   };
