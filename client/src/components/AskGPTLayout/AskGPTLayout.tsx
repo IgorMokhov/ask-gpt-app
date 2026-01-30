@@ -17,6 +17,7 @@ export const AskGPTLayout = () => {
         (AIResponse ? <AIMessage text={AIResponse} /> : <WelcomeMessage />)}
 
       <AskGPTForm
+        isLoading={isLoading}
         onSaveAIResponse={setAIResponse}
         onSaveError={setError}
         setIsLoading={setIsLoading}

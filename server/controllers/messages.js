@@ -2,7 +2,7 @@ import { getAIResponse } from '../services/openaiService.js';
 
 export const getMessageHandler = async (req, res) => {
   const { message } = req.body;
-  if (!message) {
+  if (typeof message !== 'string' || !message.trim()) {
     return res.status(400).json({ error: 'Message must be a non-empty string' });
   }
 
